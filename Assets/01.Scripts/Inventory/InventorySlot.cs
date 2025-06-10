@@ -10,7 +10,11 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Transform originalParent;
     private Canvas canvas;
 
-    private GameObject draggingIcon; 
+    private GameObject draggingIcon;
+
+    public Inventory inventory;         // 이 슬롯이 속한 인벤토리
+    public int index;                   // 이 슬롯의 인벤토리 인덱스
+
 
     void Start()
     {
@@ -66,8 +70,13 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void SwapItems(InventorySlot otherSlot)
     {
-        var tempData = itemData;
-        SetItem(otherSlot.itemData);
-        otherSlot.SetItem(tempData);
+        // 인벤토리의 ItemData도 교체
+        var temp = inventory.items[index];
+        inventory.items[index] = otherSlot.inventory.items[otherSlot.index];
+        otherSlot.inventory.items[otherSlot.index] = temp;
+
+        // UI 업데이트
+        inventory.GetComponent<InventoryUI>().UpdateInventoryUI();
     }
+
 }
