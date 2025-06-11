@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(ItemData item)
     {
         items.Add(item);
+        FindObjectOfType<InventoryUI>().UpdateInventoryUI();
     }
     public void RemoveItem(ItemData item)
     {

@@ -5,15 +5,15 @@ using UnityEngine;
 public class TestInventory : MonoBehaviour
 {
     public Inventory inventory;
-    public InventoryUI inventoryUI;
-    public ItemData itemData;
+    public ItemData testItem;
 
-
-    void Start()
+    void Update()
     {
-        inventory.AddItem(itemData);
-        inventoryUI.UpdateInventoryUI();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            inventory.AddItem(testItem);
+        }
     }
 
-    
+
 }
