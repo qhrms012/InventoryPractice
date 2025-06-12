@@ -16,4 +16,4 @@ MonoBehaviour:
   itemId: 1
   itemName: gun
   itemDescription: gungun
-  itemIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 426e3be6a1d82cb42b6f3ea31f1194ee, type: 3}
