@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     public Inventory inventory;
     public Transform itemPanel;
     public GameObject itemSlot;
+    
     private List<GameObject> itemSlots = new List<GameObject>();
 
     public void UpdateInventoryUI()
@@ -21,23 +22,25 @@ public class InventoryUI : MonoBehaviour
         {
             var item = inventory.items[i];
             GameObject slot = Instantiate(itemSlot, itemPanel);
-            var slotScript = slot.GetComponent<InventorySlot>();
+            var slotScript = slot.GetComponentInChildren<InventorySlot>();
 
             slotScript.itemData = item;
             slotScript.inventory = inventory;
             slotScript.index = i;
 
-            var image = slot.GetComponentInChildren<Image>();
+            GameObject itemImageObj = slot.transform.Find("ItemImage").gameObject;
+            Image image = itemImageObj.GetComponent<Image>();
             var text = slot.GetComponentInChildren<TextMeshProUGUI>();
 
             if (item != null)
             {
+                image.enabled = true;
                 image.sprite = item.itemIcon;
                 text.text = item.itemName;
             }
             else
             {
-                image.sprite = null;
+                image.enabled = false;
                 text.text = "";
             }
 

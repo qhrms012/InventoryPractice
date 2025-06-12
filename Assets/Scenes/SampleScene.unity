@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 9688165}
   itemPanel: {fileID: 1962586384}
-  itemSlot: {fileID: 8939270805327722038, guid: d43b896d7d72765459d97438fe8ac6bf, type: 3}
+  itemSlot: {fileID: 8086594149352001067, guid: d43b896d7d72765459d97438fe8ac6bf, type: 3}
 --- !u!114 &9688165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e91faa1478c3a94d947af52cc85e121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSlotCount: 20
   items: []
 --- !u!4 &9688166
 Transform:
@@ -653,7 +654,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 300, y: 300}
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 30, y: 30}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1660057539 &9223372036854775807
