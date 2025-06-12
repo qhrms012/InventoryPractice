@@ -13,20 +13,33 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        foreach (var slot in itemSlots) Destroy(slot);
+        foreach (GameObject slot in itemSlots)
+            Destroy(slot);
         itemSlots.Clear();
 
         for (int i = 0; i < inventory.items.Count; i++)
         {
-            ItemData item = inventory.items[i];
+            var item = inventory.items[i];
             GameObject slot = Instantiate(itemSlot, itemPanel);
-            slot.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName;
-            slot.GetComponentInChildren<Image>().sprite = item.itemIcon;
+            var slotScript = slot.GetComponent<InventorySlot>();
 
-            var inventorySlot = slot.GetComponent<InventorySlot>();
-            inventorySlot.itemData = item;
-            inventorySlot.inventory = inventory;
-            inventorySlot.index = i;
+            slotScript.itemData = item;
+            slotScript.inventory = inventory;
+            slotScript.index = i;
+
+            var image = slot.GetComponentInChildren<Image>();
+            var text = slot.GetComponentInChildren<TextMeshProUGUI>();
+
+            if (item != null)
+            {
+                image.sprite = item.itemIcon;
+                text.text = item.itemName;
+            }
+            else
+            {
+                image.sprite = null;
+                text.text = "";
+            }
 
             itemSlots.Add(slot);
         }
