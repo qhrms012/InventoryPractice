@@ -36,8 +36,9 @@ public class Inventory : MonoBehaviour
     {
         if (index >= 0 && index < items.Count)
         {
-            items[index] = null;
+            items.RemoveAt(index);
         }
+        FindObjectOfType<InventoryUI>().UpdateInventoryUI();
     }
 
     public void DropItem(ItemData item, Vector3 dropPosition)

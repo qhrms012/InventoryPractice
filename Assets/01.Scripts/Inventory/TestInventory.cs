@@ -19,6 +19,15 @@ public class TestInventory : MonoBehaviour
         {
             inventory.AddItem(testItem2);
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            var hoveredSlot = InventorySlot.currentHoveredSlot;
+            if (hoveredSlot != null)
+            {
+                inventory.RemoveItem(hoveredSlot.index);
+            }
+        }
     }
 
 

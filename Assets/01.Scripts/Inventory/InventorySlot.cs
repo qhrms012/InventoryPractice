@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,IPointerEnterHandler, IPointerExitHandler
 {
     public ItemData itemData;
     public Inventory inventory;
@@ -11,6 +11,8 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     private Transform originalParent;                 // ¿Ã ΩΩ∑‘¿« ¿Œ∫•≈‰∏Æ ¿Œµ¶Ω∫
+
+    public static InventorySlot currentHoveredSlot;
 
 
     void Awake()
@@ -23,6 +25,17 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         rectTransform = GetComponent<RectTransform>();
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        currentHoveredSlot = this;
+        Debug.Log("µÈæÓø»");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (currentHoveredSlot == this)
+            currentHoveredSlot = null;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = transform.parent;
