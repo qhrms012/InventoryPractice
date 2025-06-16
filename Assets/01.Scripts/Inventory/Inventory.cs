@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
     {
         if (index >= 0 && index < items.Count)
         {
-            items.RemoveAt(index);
+            items[index] = null;
         }
         FindObjectOfType<InventoryUI>().UpdateInventoryUI();
     }
