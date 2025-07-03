@@ -7,7 +7,7 @@ public class TutorialManager : MonoBehaviour
 {
     public TextMeshProUGUI tutorialText;
     public Button nextButton;
-    public GameObject tutorialUIObject;
+    
 
     private List<string> tutorialMessages = new List<string>()
     {
@@ -35,7 +35,7 @@ public class TutorialManager : MonoBehaviour
         else
         {
             gameObject.SetActive(false); // Æ©Åä¸®¾ó Á¾·á ½Ã ¼û±è
-            tutorialUIObject.SetActive(false);
+            
             
         }
     }
